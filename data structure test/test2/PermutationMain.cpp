@@ -1,7 +1,5 @@
 #include <stdio.h>
 //@file : PermutationMain.cpp
-//@date : 2021/09/19
-//@author : 21812076 심상혁
 //순열을 구하는 알고리즘 구현 후 { "GO", "BOY", "GIRL", "GIRLS" }를 순열 알고리즘을 호출하여 출력
 
 #define SWAP(x,y,t) ((t)=(x), (x)=(y), (y)=(t))//perm함수에 사용할 스왑 매크로
