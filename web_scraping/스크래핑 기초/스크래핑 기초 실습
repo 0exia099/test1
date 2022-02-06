@@ -1,0 +1,100 @@
+import requests
+
+###설치방법
+#pip install requests
+#conda install requests
+
+url = "https://www.yu.ac.kr/main/main.do"
+r = requests.get(url, verify=False) #SSL 인증과정 생략
+
+print(r.status_code)
+#200
+
+if r.status_code == 200:
+    print('성공')
+else r.status_code == 404:
+    print('실패')
+    
+    if r:
+    print('성공')
+else:
+    print('실패')
+#성공
+
+r.raise_for_status()
+
+r = requests.get('http://www.yu.ac.kr/mmm.html')
+
+print(r.status_code)
+#200
+
+url = "https://www.yu.ac.kr/main/main.do"
+r = requests.get(url, verify=False) #SSL 인증과정 생략
+r.raise_for_status()
+
+print(r.content)
+#b'<!doctype html>\n<html lang="ko">\n\t<head>\n\t\t<meta http-equiv="X-UA-Compatible" content="IE=edge" />\n\t\t<title>\xec\x98\x81\xeb\x82\xa8\xeb\x8c\x80\xed\x95\x99\xea\xb5\x90</title>\n\t\t<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n\t\t<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes">\n\t\t<link rel="apple-touch-icon" sizes="180x180" href="/_res/yu/main/etc/apple-touch-icon.png">\n\t\t<link rel="icon" type="image/png" sizes="32x32" href="/_res/yu/main/etc/favicon-32x32.png">\n\t\t
+
+from bs4 import BeautifulSoup
+
+###bs4 설치
+conda install -c conda-forge bs4
+pip install bs4
+
+soup = BeautifulSoup(r.content, 'html.parser')
+
+print(soup.prettify())
+#<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   영남대학교
+  </title>..........................
+  
+print(soup.children)
+#<list_iterator object at 0x000001C56C16F340>
+
+print(list(soup.children))
+#['html', '\n', <html lang="ko">
+<head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>영남대학교</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes" name="viewport"/>
+<link href="/_res/yu/main/etc/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/_res/yu/main/etc/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/_res/yu/main/etc/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/_res/yu/main/etc/site.webmanifest" rel="manifest"/>
+<link color="#5bbad5" href="/_res/yu/main/etc/safari-pinned-tab.svg" rel="mask-icon"/>
+<meta content="#da532c" name="msapplication-TileColor"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="”/_res/yu/main/etc/favicon.ico”" icon”="" rel="”shortcut"/>
+<meta content="website" property="og:type">
+<meta content="ko" property="og:locale">............................
+
+html = list(soup.children)[2]
+html
+#<html lang="ko">
+<head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>영남대학교</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>.....................
+
+list(html.children)
+[  type(i) for i in list(html.children)]
+body = list(html.children)[3]
+body
+list(body.children)
+[type(i) for i in list(body.children)]
+list(body.children)[1]
+list(body.children)[1].get_text()
+soup.find_all('p')
+soup.find_all('p', class_='mini-title')
+soup.find_all('p', class_='mini-title')[0]
+soup.find('p')
+soup.find('p', class_='mini-title')
+soup.select('p.mini-title')
+
+
+
