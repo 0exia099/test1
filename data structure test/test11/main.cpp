@@ -3,10 +3,10 @@
 #pragma warning(disable:28182)
 
 //@file : main.cpp
-/*±×·¡ÇÁÀÇ ³ëµå ¼ö¿Í ¿¡Áö Á¤º¸(½ÃÀÛÁ¤Á¡, Á¾·á Á¤Á¡, °¡ÁßÄ¡)¸¦ ÀÔ·Â ¹Ş¾Æ
-* ÀÎÁ¢Çà·Ä·Î ±×·¡ÇÁ¸¦ Ç¥ÇöÇÏ°í shortestPathÇÔ¼ö¸¦ ÅëÇØ ´ÜÀÏ Ãâ¹ßÁ¡¿¡¼­ ÃÖ´Ü°æ·Î,
-allcostsÇÔ¼ö¸¦ ÅëÇØ ¸ğµç ½ÖÀÇ ÃÖ´Ü °æ·Î¸¦ Ãâ·ÂÇÑ´Ù.
-¿©·¯ ±×·¡ÇÁ¸¦ ½Ç½ÀÇÒ ¼ö ÀÖ°Ô ¹İº¹¹®À» ÅëÇØ ÇÁ·Î±×·¥ Á¾·á ¾øÀÌ ±×·¡ÇÁ¸¦ ¿©·¯¹ø ÀÔ·Â¹ŞÀ» ¼ö ÀÖ´Ù.
+/*ê·¸ë˜í”„ì˜ ë…¸ë“œ ìˆ˜ì™€ ì—ì§€ ì •ë³´(ì‹œì‘ì •ì , ì¢…ë£Œ ì •ì , ê°€ì¤‘ì¹˜)ë¥¼ ì…ë ¥ ë°›ì•„
+* ì¸ì ‘í–‰ë ¬ë¡œ ê·¸ë˜í”„ë¥¼ í‘œí˜„í•˜ê³  shortestPathí•¨ìˆ˜ë¥¼ í†µí•´ ë‹¨ì¼ ì¶œë°œì ì—ì„œ ìµœë‹¨ê²½ë¡œ,
+allcostsí•¨ìˆ˜ë¥¼ í†µí•´ ëª¨ë“  ìŒì˜ ìµœë‹¨ ê²½ë¡œë¥¼ ì¶œë ¥í•œë‹¤.
+ì—¬ëŸ¬ ê·¸ë˜í”„ë¥¼ ì‹¤ìŠµí•  ìˆ˜ ìˆê²Œ ë°˜ë³µë¬¸ì„ í†µí•´ í”„ë¡œê·¸ë¨ ì¢…ë£Œ ì—†ì´ ê·¸ë˜í”„ë¥¼ ì—¬ëŸ¬ë²ˆ ì…ë ¥ë°›ì„ ìˆ˜ ìˆë‹¤.
 */
 
 #include <stdio.h>
@@ -19,23 +19,23 @@ void allcosts(int** graph, int** distance, int n);
 int main() {
 	int num = 6, i, j;
 	int v1, v2, w;
-	int** graph;//±×·¡ÇÁ ÀÎÁ¢Çà·ÄÇ¥ÇöÀ» À§ÇÑ º¯¼ö
-	int* distance;//shortestPathÀÇ °á°ú¸¦ ÀúÀåÇÒ º¯¼ö
-	int** all_distance;//allcostsÀÇ °á°ú¸¦ ÀúÀåÇÒ º¯¼ö
+	int** graph;//ê·¸ë˜í”„ ì¸ì ‘í–‰ë ¬í‘œí˜„ì„ ìœ„í•œ ë³€ìˆ˜
+	int* distance;//shortestPathì˜ ê²°ê³¼ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+	int** all_distance;//allcostsì˜ ê²°ê³¼ë¥¼ ì €ì¥í•  ë³€ìˆ˜
 	short int* found;
 
-	printf("¿©·¯ ±×·¡ÇÁ¸¦ È®ÀÎÇÏ±â À§ÇÏ¿© ±×·¡ÇÁ¸¦ ÀÔ·Â ¹ŞÀº µÚ\nshortestPath(), allCost()±îÁö Ãâ·ÂÇÏ°í ´Ù½Ã ±×·¡ÇÁ ÀÔ·Â¹ŞÀ½.\n");
+	printf("ì—¬ëŸ¬ ê·¸ë˜í”„ë¥¼ í™•ì¸í•˜ê¸° ìœ„í•˜ì—¬ ê·¸ë˜í”„ë¥¼ ì…ë ¥ ë°›ì€ ë’¤\nshortestPath(), allCost()ê¹Œì§€ ì¶œë ¥í•˜ê³  ë‹¤ì‹œ ê·¸ë˜í”„ ì…ë ¥ë°›ìŒ.\n");
 	
-	while (true) {//¿©·¯ ±×·¡ÇÁ È®ÀÎÀ» À§ÇÑ ¹İº¹¹®
-		printf("³ëµå ¼ö¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.(-1ÀÔ·Â½Ã Á¾·á)>>");
+	while (true) {//ì—¬ëŸ¬ ê·¸ë˜í”„ í™•ì¸ì„ ìœ„í•œ ë°˜ë³µë¬¸
+		printf("ë…¸ë“œ ìˆ˜ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.(-1ì…ë ¥ì‹œ ì¢…ë£Œ)>>");
 		if (scanf("%d", &num) != 1) {
-			printf("ÀÔ·Â½ÇÆĞ\n");
+			printf("ì…ë ¥ì‹¤íŒ¨\n");
 			exit(1);
 		}
 		if (num == -1)
 			break;
 
-		//graph[][]µ¿ÀûÇÒ´ç
+		//graph[][]ë™ì í• ë‹¹
 		graph = (int**)malloc(sizeof(int*) * num);
 		if (graph == NULL) {
 			fprintf(stderr, "The memory is full\n");
@@ -49,13 +49,13 @@ int main() {
 			}
 		}
 
-		distance = (int*)malloc(sizeof(int) * num);//distanceµ¿ÀûÇÒ´ç
+		distance = (int*)malloc(sizeof(int) * num);//distanceë™ì í• ë‹¹
 		if (distance == NULL) {
 			fprintf(stderr, "The memory is full\n");
 			exit(1);
 		}
 
-		//all_distance[][]µ¿ÀûÇÒ´ç
+		//all_distance[][]ë™ì í• ë‹¹
 		all_distance = (int**)malloc(sizeof(int*) * num);
 		if (all_distance == NULL) {
 			fprintf(stderr, "The memory is full\n");
@@ -69,31 +69,31 @@ int main() {
 			}
 		}
 
-		found = (short int*)malloc(sizeof(short int) * num);//foundµ¿ÀûÇÒ´ç
+		found = (short int*)malloc(sizeof(short int) * num);//foundë™ì í• ë‹¹
 		if (found == NULL) {
 			fprintf(stderr, "The memory is full\n");
 			exit(1);
 		}
 
-		for (i = 0; i < num; i++) {//graphÇà·Ä ÃÊ±âÈ­
+		for (i = 0; i < num; i++) {//graphí–‰ë ¬ ì´ˆê¸°í™”
 			for (j = 0; j < num; j++) {
-				if (i == j)//ÀÚ±âÀÚ½ÅÀº °¡ÁßÄ¡ 0
+				if (i == j)//ìê¸°ìì‹ ì€ ê°€ì¤‘ì¹˜ 0
 					graph[i][j] = 0;
 				else
-					graph[i][j] = 9999;//¹«ÇÑ´ë ´ë½Å 9999
+					graph[i][j] = 9999;//ë¬´í•œëŒ€ ëŒ€ì‹  9999
 			}
 		}
 
-		printf("¿¡Áö Á¤º¸(½ÃÀÛÁ¤Á¡, Á¾·á Á¤Á¡, °¡ÁßÄ¡)¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n***-1 -1 -1ÀÔ·Â½Ã Á¾·á.***\n");
-		while (true) {//-1 -1 -1ÀÔ·Â½Ã±îÁö ¿¡Áö Á¤º¸ ÀÔ·Â¹ŞÀ½
+		printf("ì—ì§€ ì •ë³´(ì‹œì‘ì •ì , ì¢…ë£Œ ì •ì , ê°€ì¤‘ì¹˜)ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n***-1 -1 -1ì…ë ¥ì‹œ ì¢…ë£Œ.***\n");
+		while (true) {//-1 -1 -1ì…ë ¥ì‹œê¹Œì§€ ì—ì§€ ì •ë³´ ì…ë ¥ë°›ìŒ
 			scanf("%d %d %d", &v1, &v2, &w);
 			if (v1 == -1 && v2 == -1 && w == -1)
 				break;
-			graph[v1][v2] = w;//graphÇà·Ä¿¡ ÀúÀå
+			graph[v1][v2] = w;//graphí–‰ë ¬ì— ì €ì¥
 		}
 
-		printf("ÀÔ·Â¹ŞÀº ±×·¡ÇÁ ÀÎÁ¢Çà·Ä·Î Ç¥Çö\n");
-		for (i = 0; i < num; i++) {//graphÀÎÁ¢Çà·Ä Ãâ·Â
+		printf("ì…ë ¥ë°›ì€ ê·¸ë˜í”„ ì¸ì ‘í–‰ë ¬ë¡œ í‘œí˜„\n");
+		for (i = 0; i < num; i++) {//graphì¸ì ‘í–‰ë ¬ ì¶œë ¥
 			for (j = 0; j < num; j++) {
 				if (graph[i][j] == 9999)
 					printf("-\t");
@@ -104,17 +104,17 @@ int main() {
 		}
 		printf("\n");
 
-		while (true) {//shortestPathÇÔ¼ö ½ÇÇà
-			printf("shortestPath()ÀÇ ½ÃÀÛ³ëµå¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä. -1ÀÔ·Â½Ã ¹İº¹ Á¾·á.\n");
+		while (true) {//shortestPathí•¨ìˆ˜ ì‹¤í–‰
+			printf("shortestPath()ì˜ ì‹œì‘ë…¸ë“œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”. -1ì…ë ¥ì‹œ ë°˜ë³µ ì¢…ë£Œ.\n");
 			if (scanf("%d", &v1) != 1) {
-				printf("ÀÔ·Â½ÇÆĞ\n");
+				printf("ì…ë ¥ì‹¤íŒ¨\n");
 				exit(1);
 			}
 			if (v1 == -1)
 				break;
-			printf("shortestPath().½ÃÀÛ³ëµå : %d\n", v1);
+			printf("shortestPath().ì‹œì‘ë…¸ë“œ : %d\n", v1);
 			shortestPath(v1, graph, distance, num, found);
-			for (i = 0; i < num; i++) {//°á°ú Ãâ·Â
+			for (i = 0; i < num; i++) {//ê²°ê³¼ ì¶œë ¥
 				if (distance[i] == 9999)
 					printf("-\t");
 				else
@@ -125,8 +125,8 @@ int main() {
 		printf("\n");
 
 		printf("allCost()\n");
-		allcosts(graph, all_distance, num);//allcostsÇÔ¼ö ½ÇÇà
-		for (i = 0; i < num; i++) {//°á°ú Ãâ·Â
+		allcosts(graph, all_distance, num);//allcostsí•¨ìˆ˜ ì‹¤í–‰
+		for (i = 0; i < num; i++) {//ê²°ê³¼ ì¶œë ¥
 			for (j = 0; j < num; j++) {
 				if (all_distance[i][j] == 9999)
 					printf("-\t");
@@ -136,7 +136,7 @@ int main() {
 			printf("\n");
 		}
 
-		//µ¿ÀûÇÒ´ç ÇØÁ¦
+		//ë™ì í• ë‹¹ í•´ì œ
 		free(distance);
 		free(found);
 		for (i = 0; i < num; i++) {
@@ -147,26 +147,26 @@ int main() {
 			free(all_distance[i]);
 		}
 		free(all_distance);
-	}//ÀüÃ¼ ¹İº¹¹® Á¾·á
-	system("PAUSE");//½ÇÇàÆÄÀÏ¿¡¼­ ¹Ù·Î Á¾·áµÇ´Â °ÍÀ» ¸·±âÀ§ÇÑ ÀÏ½ÃÁ¤Áö
+	}//ì „ì²´ ë°˜ë³µë¬¸ ì¢…ë£Œ
+	system("PAUSE");//ì‹¤í–‰íŒŒì¼ì—ì„œ ë°”ë¡œ ì¢…ë£Œë˜ëŠ” ê²ƒì„ ë§‰ê¸°ìœ„í•œ ì¼ì‹œì •ì§€
 }
 
 void shortestPath(int v, int **graph, int distance[], int n, short int found[]) {
 	int i, u, w;
 	for (i = 0; i < n; i++) {
-		found[i] = 0;//foundÃÊ±âÈ­
-		distance[i] = graph[v][i];//distanceÀÇ ÃÊ±â°ªÀ» graph·Î ÃÊ±âÈ­
+		found[i] = 0;//foundì´ˆê¸°í™”
+		distance[i] = graph[v][i];//distanceì˜ ì´ˆê¸°ê°’ì„ graphë¡œ ì´ˆê¸°í™”
 	}
-	//½ÃÀÛ°ªÀÇ found, distance°ª º¯°æ
+	//ì‹œì‘ê°’ì˜ found, distanceê°’ ë³€ê²½
 	found[v] = 1;
 	distance[v] = 0;
 	for (i = 0; i < n - 1; i++) {
-		u = choose(distance, n, found);//°¡ÁßÄ¡ ÀûÀº°Í Ã£À½
+		u = choose(distance, n, found);//ê°€ì¤‘ì¹˜ ì ì€ê²ƒ ì°¾ìŒ
 		found[u] = 1;
 		for (w = 0; w < n; w++)
 			if (found[w] == 0)
-				if (distance[u] + graph[u][w] < distance[w])//u°¬´Ù w°¡´Â °æ·Î°¡ ¹Ù·Î w·Î °¡´Â °æ·Îº¸´Ù °¡ÁßÄ¡ ÀûÀ¸¸é
-					distance[w] = distance[u] + graph[u][w];//ÀûÀº °ªÀ¸·Î º¯°æ
+				if (distance[u] + graph[u][w] < distance[w])//uê°”ë‹¤ wê°€ëŠ” ê²½ë¡œê°€ ë°”ë¡œ wë¡œ ê°€ëŠ” ê²½ë¡œë³´ë‹¤ ê°€ì¤‘ì¹˜ ì ìœ¼ë©´
+					distance[w] = distance[u] + graph[u][w];//ì ì€ ê°’ìœ¼ë¡œ ë³€ê²½
 	}
 }
 int choose(int distance[], int n, short int found[]) {
@@ -175,7 +175,7 @@ int choose(int distance[], int n, short int found[]) {
 	min = INT_MAX;
 	minpos = -1;
 	for(i=0;i<n;i++)
-		if (distance[i] < min && found[i] == 0) {//¾ÆÁ÷ °¡Áö ¾ÊÀº °Í Áß °¡ÁßÄ¡ ÀûÀº°Í Ã£±â 
+		if (distance[i] < min && found[i] == 0) {//ì•„ì§ ê°€ì§€ ì•Šì€ ê²ƒ ì¤‘ ê°€ì¤‘ì¹˜ ì ì€ê²ƒ ì°¾ê¸° 
 			min = distance[i];
 			minpos = i;
 		}
@@ -185,10 +185,10 @@ void allcosts(int** graph, int** distance, int n) {
 	int i, j, k;
 	for (i = 0; i < n; i++)
 		for (j = 0; j < n; j++)
-			distance[i][j] = graph[i][j];//distance ÃÊ±âÈ­
+			distance[i][j] = graph[i][j];//distance ì´ˆê¸°í™”
 	for (k = 0; k < n; k++)
 		for (i = 0; i < n; i++)
 			for (j = 0; j < n; j++)
-				if (distance[i][k] + distance[k][j] < distance[i][j])//i->k->jÀÇ °¡ÁßÄ¡¿Í i->jÀÇ °¡ÁßÄ¡ Áß ÀûÀº°Í ÀúÀå
+				if (distance[i][k] + distance[k][j] < distance[i][j])//i->k->jì˜ ê°€ì¤‘ì¹˜ì™€ i->jì˜ ê°€ì¤‘ì¹˜ ì¤‘ ì ì€ê²ƒ ì €ì¥
 					distance[i][j] = distance[i][k] + distance[k][j];
 }
