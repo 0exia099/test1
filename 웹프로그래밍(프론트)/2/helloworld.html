@@ -1,0 +1,75 @@
+<!DOCTYPE html><!--HTML5문서인 것을 알리기 위해 반드시 첫 행에 나와야 한다.-->
+<!--html 주석은 사라지지 않는다. 페이지 소스로 볼때 남아있음
+    디버깅 정보나 서버 아이디 등 남겨두면 위험-->
+<html lang="ko"><!--모든 HTML 페이지의 기본 요소, 모든 태그는 이 html 태그 내부에 작성-->
+<!--lang에는 언어 줌-->
+    <head><!--스타일 시트와 자바 스크립트 제공-->
+        <title>웹프로그래밍 실습</title><!--웹브라우저에 표시하는 제목-->
+        <!--style><html에서 css적용>
+            h1{
+                color: white;
+                background: black;
+            }
+            h2{
+                color: yellow;
+                background: green;
+            }
+        </style-->
+        <link rel="stylesheet" href="style.css"><!--css파일에서 사용-->
+    </head>
+    <body><!--사용자에게 실제로 보이는 부분을 작성하는 곳-->
+        <div>
+            <h1 id="title1" title="header">컴퓨터공학과</h1>
+            <h2>Hello World</h2>
+            <p>2023-1학기
+                <br>
+                전공수업 실습</p><!--html의 엔터나 스페이스는 공백하나로만 취급->br을 통해 엔터 사용-->
+            <h2>웹프로그래밍&nbsp;수업</h2><!--&nbsp;를 하면 공백 하나-->
+            <hr><!--수평줄 삽입-->
+            <p>즐거운 웹 프로그래밍 입문
+                &nbsp;
+                <button id="btn1">책상으로</button>
+                &nbsp;
+                <a href="https://www.yu.ac.kr/main/index.do"><i>영남</i><b>대학교</b></a><!--하이퍼링크 태그 a-->
+                &nbsp;
+                <a href="https://cse.yu.ac.kr/cse/index.do"><sup>컴퓨터</sup><sub>공학과</sub></a>
+                <!--하이퍼링크 경로는 절대경로, 현재 폴더부터 상대경로,아이디경로(#id속성), 메일경로 가능-->
+                &nbsp;&nbsp;&nbsp;
+                <a href="#title1">제목으로</a>
+                <!--아이디 경로는 현재 웹페이지의 해당 아이디의 위치로 이동-->
+                <!--메일은 해당 메일로 이동-->
+                <!--i : 이텔릭체(기울어짐)
+                    b : 진하게
+                    sup : 윗첨자
+                    sub : 아랫첨자-->
+            </p>
+            <img id="img1" src="./IMG_1211-2.PNG" height="500" width="670">
+            <p><!--목록-->
+                <ul>
+                    <li>과일
+                        <ul><!--점으로 된 목록-->
+                            <li>사과</li>
+                            <li>배</li>
+                            <li>복숭아</li>
+                        </ul>
+                    </li>
+                    <li>고기
+                        <ol><!--숫자로 된 목록-->
+                            <li>소고기</li>
+                            <li>돼지고기</li>
+                            <li>닭고기</li>
+                        </ol>
+                    </li>
+                </ul>
+            </p>
+            <!--주석-->
+        </div>
+        <!--자바스크립트 html에서 사용-->
+        <!--script>// 자바스크립트로 취급
+            function toggleImg() {
+              document.getElementById("img1").src = "./IMG_0786.PNG";
+            }
+        </script-->
+        <script src="hello.js"></script>
+    </body>
+</html>
