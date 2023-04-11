@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(221, 221, 221);
+        }
+        div.container {
+            margin: 0 auto;
+            width: 1080px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            background-color: rgb(221, 221, 221);
+        }
+
+        div.left {
+            float: left;
+            width: 740px;
+            height: 428px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        div.right {
+            float: right;
+            width: 332px;
+            height: 428px;
+            background-color: rgb(149, 223, 137);
+        }
+
+        ul.gnb {
+            background-color: rgb(90, 238, 64);
+            float: left;
+            padding: 8px 0 8px 0;
+        }
+
+        ul.gnb > li {
+            list-style-type: none;
+            float: left;
+            padding-left: 16px;
+        }
+
+        ul.gnb > li:first-child {
+            padding-left: 0px;
+        }
+
+        ul.rank {
+            background-color: rgb(255, 241, 114);
+            float: right;
+            padding: 8px 0 8px 0;
+        }
+        ul.rank > li{
+            list-style-type: none;
+        }
+        .footer{
+            height: 80px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. 너비 1080px의 컨테이너를 만듭니다. -->
+    <!-- 2. 컨테이너를 중앙 정렬합니다. -->
+    <!-- 3. 아래 margin을 8px로 줍니다. -->
+    <div class="container">
+        <h1>Logo</h1>
+        <!-- 2. ul.gnb 태그를 왼쪽에 붙입니다. -->
+        <!-- 3. 위아래 padding을 8px로 줍니다. -->
+        <!-- 4. 왼쪽 오른쪽 padding을 0px로 줍니다. -->
+        <ul class="gnb">
+            <!-- 5. 내부의 li 태그들은 list-style-type을 none으로 지정합니다. -->
+            <!-- 6. 내부의 li 태그들은 왼쪽으로 붙여서 나란하게 만듭니다. -->
+            <!-- 7. 내부의 li 태그들은 왼쪽 padding을 16px로 줍니다. -->
+            <!-- 8. 첫 번째 요소는 왼쪽 padding을 0px로 줍니다. -->
+            <li>메일</li>
+            <li>카페</li>
+            <li>블로그</li>
+            <li>쇼핑</li>
+            <li>사전</li>
+            <li>뉴스</li>
+            <li>증권</li>
+            <li>부동산</li>
+            <li>지도</li>
+        </ul>
+        <!-- 9. ul.rank 태그는 오른쪽에 붙입니다. -->
+        <!-- 10. 위아래 padding을 8px로 줍니다. -->
+        <ul class="rank">
+            <!-- 11. 내부의 li 태그들은 list-style-type을 none으로 지정합니다. -->
+            <li>실시간 검색 순위</li>
+        </ul>
+
+    </div>
+    <div class="container">
+        <!-- 4. div.left를 왼쪽에 붙이고 -->
+        <!-- 5. 너비 740px, 높이 428px로 크기를 잡습니다. -->
+        <div class="left"></div>
+        <!-- 6. div.left를 오른쪽에 붙이고 -->
+        <!-- 7. 너비 332px, 높이 428px로 크기를 잡습니다. -->
+        <div class="right"></div>
+    </div>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <div class="container">
+        <!-- 높이를 80px로 지정했습니다. -->
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>
