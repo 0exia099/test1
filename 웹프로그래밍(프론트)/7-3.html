@@ -1,54 +1,81 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absolute Example</title>
     <style>
-        #container{
+        #container {
             width: 500px;
             height: 300px;
             border: 3px solid black;
             overflow: hidden;
             position: relative;
         }
-        #red{
+
+        #red {
             background-color: red;
             left: 20px;
             top: 20px;
         }
-        #green{
+
+        #green {
             background-color: green;
             right: 20px;
             top: 20px;
         }
-        #blue{
+
+        #blue {
             background-color: blue;
-            left: 20px;
-            bottom: 20px;
-        }
-        #yellow{
-            background-color: yellow;
             right: 20px;
             bottom: 20px;
         }
-        .circle{
+
+        #yellow {
+            background-color: yellow;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        #black {
+            background-color: black;
+            left: 200px;
+            bottom: 100px;
+        }
+
+        .circle {
             position: absolute;
             border-radius: 50%;
             width: 100px;
             height: 100px;
         }
+        #center{
+            width: 506px;
+            height: 600px;
+            background-color: antiquewhite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -300px;
+            margin-left: -253px;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Dummy.......</h1>
-    <div id="container">
-        <div id="red" class="circle"></div>
-        <div id="green" class="circle"></div>
-        <div id="blue" class="circle"></div>
-        <div id="yellow" class="circle"></div>
+    <div id="center">
+        <h1>Dummy.......</h1>
+        <div id="container">
+            <div id="red" class="circle"></div>
+            <div id="green" class="circle"></div>
+            <div id="blue" class="circle"></div>
+            <div id="yellow" class="circle"></div>
+            <div id="black" class="circle"></div>
+        </div>
+        <h1>Dummy ...</h1>
     </div>
-    <h1>Dummy   ...</h1>
 </body>
+
 </html>
